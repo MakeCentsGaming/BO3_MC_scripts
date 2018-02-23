@@ -46,8 +46,7 @@ Structs placed near triggers
 function SetUpZones()
 {
 	level.lastmczonecount = 0;
-	level.zonestructs = struct::get_array(MCDYNZONESSCRIPTNOTE, "script_noteworthy");
-	level.zonestructs = ArrayCombine(level.zonestructs, struct::get_array(MCDYNZONESSCRIPTNOTE, "targetname"),false,false);
+	SetZoneStructs();
 	mc_zones = getentarray(MCDYNZONESSCRIPTNOTE, "targetname");
 	
 	foreach(index, z in mc_zones)
@@ -59,6 +58,26 @@ function SetUpZones()
 	level SpawnModels();
 	level CheckTriggers();
 	level DeleteZoneStructs();
+}
+
+
+function private SetZoneStructs()
+{
+	level.zonestructs = struct::get_array(MCDYNZONESSCRIPTNOTE, "script_noteworthy");
+	level.zonestructs = ArrayCombine(level.zonestructs, struct::get_array(MCDYNZONESSCRIPTNOTE, "targetname"),false,false);
+	targets = [];
+	foreach(s in level.zonestructs)
+	{
+		if(isdefined(s.target))
+		{
+			ts = struct::get_array(s.target, "targetname");
+			foreach(t in ts)
+			{
+				targets[targets.size] = t;
+			}
+		}
+	}
+	level.zonestructs = ArrayCombine(level.zonestructs,targets,false,false);
 }
 
 function CheckTriggers()

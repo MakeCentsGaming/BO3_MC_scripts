@@ -47,6 +47,7 @@ function SetUpZones()
 {
 	level.lastmczonecount = 0;
 	level.zonestructs = struct::get_array(MCDYNZONESSCRIPTNOTE, "script_noteworthy");
+	level.zonestructs = ArrayCombine(level.zonestructs, struct::get_array(MCDYNZONESSCRIPTNOTE, "targetname"),false,false);
 	mc_zones = getentarray(MCDYNZONESSCRIPTNOTE, "targetname");
 	
 	foreach(index, z in mc_zones)

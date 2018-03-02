@@ -35,7 +35,7 @@ scriptparsetree,scripts/zm/mc_dyn_zones/mc_dyn_zones.gsc
 Radiant:
 Add zones (info_volume) with spawners as targets (can be auto targets), no targetname needed
 Add a struct between zones with kvps:
-script_noteworthy>mc_dyn_zones (or whatever you define MCDYNZONESSCRIPTNOTE is)
+targetname or script_noteworthy>mc_dyn_zones (or whatever you define MCDYNZONESSCRIPTNOTE is)
 If you place structs away from triggers then make them the target of the structs that are near
 	triggers, that you want to activate at the same time (for splitting zones) or give it a known
 	script_flag	like zones_initialized or something your using to activate it
@@ -49,7 +49,7 @@ Structs placed near triggers
 ###############################################################################
 */
 
-#define MCDYNZONESSCRIPTNOTE "mc_dyn_zones" //script_noteworthy for structs
+#define MCDYNZONESSCRIPTNOTE "mc_dyn_zones" //targetname or script_noteworthy for structs
 #define MCDYNSTRUCTDISTMAX 150
 #define MCDYNTRIGDISTANCEMAX 100
 #define USEZONESFLAGFORNONEFOUND false //false for dyn doors, otherwise everythign is adjacent through walls
